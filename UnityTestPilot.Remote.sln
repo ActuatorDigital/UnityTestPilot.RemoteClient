@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTestPilotRemote.Tests", "UnityTestPilotRemote.Tests\UnityTestPilotRemote.Tests.csproj", "{5BC901EC-27E2-46E0-B6C2-68F22CD19B93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTestPilotRemote", "UnityTestPilotRemote\UnityTestPilotRemote.csproj", "{BC1AF07F-7FC9-4DE7-887F-24DC015DD353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTestPilotRemote.Common", "UnityTestPilotRemote.Common\UnityTestPilotRemote.Common.csproj", "{83840526-7038-47C0-A399-EA8CAF406AB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BC901EC-27E2-46E0-B6C2-68F22CD19B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC901EC-27E2-46E0-B6C2-68F22CD19B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC901EC-27E2-46E0-B6C2-68F22CD19B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC901EC-27E2-46E0-B6C2-68F22CD19B93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1AF07F-7FC9-4DE7-887F-24DC015DD353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1AF07F-7FC9-4DE7-887F-24DC015DD353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1AF07F-7FC9-4DE7-887F-24DC015DD353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1AF07F-7FC9-4DE7-887F-24DC015DD353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83840526-7038-47C0-A399-EA8CAF406AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83840526-7038-47C0-A399-EA8CAF406AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83840526-7038-47C0-A399-EA8CAF406AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83840526-7038-47C0-A399-EA8CAF406AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

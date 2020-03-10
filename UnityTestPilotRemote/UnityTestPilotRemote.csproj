@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LamarCodeGeneration" Version="1.4.0" />
+      <PackageReference Include="LamarCompiler" Version="2.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Tachyon-Client-Binder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\lib\Tachyon-Client-Binder.dll</HintPath>
+      </Reference>
+      <Reference Include="Tachyon-Client-IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\lib\Tachyon-Client-IO.dll</HintPath>
+      </Reference>
+      <Reference Include="Tachyon-Client-RPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\lib\Tachyon-Client-RPC.dll</HintPath>
+      </Reference>
+      <Reference Include="Tachyon-Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\lib\Tachyon-Common.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UnityTestPilotRemote.Common\UnityTestPilotRemote.Common.csproj" />
+    </ItemGroup>
+
+</Project>
