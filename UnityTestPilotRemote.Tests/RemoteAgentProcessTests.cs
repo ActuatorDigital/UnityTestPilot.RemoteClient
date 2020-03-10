@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace UnityTestPilotRemote.Tests
+namespace AIR.UnityTestPilotRemote.Tests
 {
 
     [TestClass]

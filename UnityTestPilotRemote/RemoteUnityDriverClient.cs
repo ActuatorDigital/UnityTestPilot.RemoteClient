@@ -6,7 +6,7 @@ using TachyonClientIO;
 using System;
 using TachyonClientBinder;
 
-namespace UnityTestPilotRemote {
+namespace AIR.UnityTestPilotRemote {
     
     public class RemoteUnityDriverClient {
 

@@ -4,7 +4,7 @@ using System.Threading;
 using System.IO;
 using System;
 
-namespace UnityTestPilotRemote
+namespace AIR.UnityTestPilotRemote
 {
     public class UiTestAgent : IRemoteUnityDriver, IAsyncDisposable
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 
-namespace UnityTestPilotRemote.Tests
+namespace AIR.UnityTestPilotRemote.Tests
 {
     [TestClass]
     public class RemoteUnityDriverClientTests {
