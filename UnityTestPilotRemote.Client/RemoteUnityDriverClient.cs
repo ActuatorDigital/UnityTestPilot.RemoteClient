@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using System.Threading;
 using TachyonClientRPC;
-using TachyonClientIO;
+using GeneratedBindings;
 using System;
-using TachyonClientBinder;
 
-namespace AIR.UnityTestPilotRemote {
-    
+namespace AIR.UnityTestPilotRemote.Client
+{
+
     public class RemoteUnityDriverClient {
 
         private int CONNECTION_TIMEOUT_SECONDS = 5;
@@ -15,7 +15,7 @@ namespace AIR.UnityTestPilotRemote {
         private ClientRpc _clientRpc;
 
         public RemoteUnityDriverClient(TimeSpan connectTimeout = default) {
-            _clientRpc = new ClientRpc(new Client(), new RemoteDriverSerializer());
+            _clientRpc = new ClientRpc(new TachyonClientIO.Client(), new RemoteDriverSerializer());
             //_driver = _clientRpc.Bind<IRemoteUnityDriver>();
             _connectTimeout = connectTimeout == default 
                 ? TimeSpan.FromSeconds(CONNECTION_TIMEOUT_SECONDS) 
@@ -43,7 +43,9 @@ namespace AIR.UnityTestPilotRemote {
         }
 
         public IRemoteUnityDriver Bind() {
-            return _clientRpc.Bind<IRemoteUnityDriver>();
+            var binding = new RemoteUnityDriverClientBinding();
+            binding.Bind(_clientRpc);
+            return binding;
         }
 
     }

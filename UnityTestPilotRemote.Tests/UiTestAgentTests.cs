@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using AIR.UnityTestPilot.Remote;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+using AIR.UnityTestPilotRemote.Client;
 
 namespace AIR.UnityTestPilotRemote.Tests
 {
@@ -14,7 +16,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Arrange
             try {
                 // Act
-                await using (await UiTestAgent.Build()) { }
+                await using (await UiTestAgent.Build("./Agent/RemoteHost.exe")) { }
             } catch (Exception ex) {
                 // Assert
                 Assert.Fail("Expected no exception, but caught: " + ex.Message );  

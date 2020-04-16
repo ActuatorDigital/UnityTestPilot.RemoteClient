@@ -4,7 +4,7 @@ using System.Threading;
 using System.IO;
 using System;
 
-namespace AIR.UnityTestPilotRemote
+namespace AIR.UnityTestPilotRemote.Client
 {
     public class UiTestAgent : IRemoteUnityDriver, IAsyncDisposable
     {
@@ -23,10 +23,9 @@ namespace AIR.UnityTestPilotRemote
             _driver = driver;
         }
 
-        public static async Task<UiTestAgent> Build()
+        public static async Task<UiTestAgent> Build(string pathToAgent)
         {
-
-            var agentExeFile = new FileInfo("./Agent/Titan.exe");
+            var agentExeFile = new FileInfo(pathToAgent);
             var agent = new RemoteAgentProcess(agentExeFile);
             var cancel = new CancellationTokenSource();
             await agent.StartAgentProcess(cancel.Token);

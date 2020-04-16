@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AIR.UnityTestPilotRemote {
+namespace AIR.UnityTestPilotRemote.Client {
     public class RemoteAgentProcess : IDisposable {
         
         Task _keepAlive;

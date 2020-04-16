@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+
+        <RootNamespace>AIR.UnityTestPilotRemote.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UnityTestPilotRemote.Client\AIR.UnityTestPilotRemote.Client.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(ProjectDir)\Agent\**" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Agent\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Agent\**" />
+    </ItemGroup>
+    
+</Project>

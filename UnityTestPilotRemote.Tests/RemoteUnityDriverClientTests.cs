@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+using AIR.UnityTestPilotRemote.Client;
 
 namespace AIR.UnityTestPilotRemote.Tests
 {
@@ -39,14 +40,14 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Assert
             Assert.IsTrue(
                 DateTime.Now > testStartTime + timeout, 
-                "Timed out before specified time"
+                "Connected, or timed out before specified time"
             ); 
         }
 
         [TestMethod]
         public async Task Connect_RemoteAgentRunning_ConnectsToAgent() {
             // Arrange
-            const string AGENT_EXE_NAME = "./Agent/Titan.exe";
+            const string AGENT_EXE_NAME = "./Agent/RemoteHost.exe";
             const int CONNECT_TIMEOUT_SECONDS = 20;
             var agentExecFile = new FileInfo(AGENT_EXE_NAME);
 
