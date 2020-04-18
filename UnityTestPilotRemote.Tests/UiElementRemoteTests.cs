@@ -14,8 +14,9 @@ namespace AIR.UnityTestPilotRemote.Tests
         UnityDriverRemote _agent;
         
         [TestInitialize]
-        public async Task TestInitialize() 
-            => _agent = await UnityDriverRemote.Attach();
+        public async Task TestInitialize()
+            // => _agent = await UnityDriverRemote.Attach()
+            => _agent = await UnityDriverRemote.Attach(AGENT_PATH);
 
         [TestCleanup]
         public async Task TestCleanup() => await _agent.DisposeAsync();

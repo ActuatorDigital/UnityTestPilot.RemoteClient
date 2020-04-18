@@ -20,7 +20,7 @@ namespace AIR.UnityTestPilot.Remote {
         public string Text;
 
         public byte[] Serialize() {
-            var elementStr = String.Join(",",
+            var elementStr = String.Join("|",
                 Name, 
                 IsActive ? "Active" : "Inactive", 
                 Text );
@@ -29,7 +29,7 @@ namespace AIR.UnityTestPilot.Remote {
 
         public void Deserialize(byte[] objBytes) {
             var elementStr = Encoding.ASCII.GetString(objBytes);
-            var elementParts = elementStr.Split(',');
+            var elementParts = elementStr.Split('|');
             Name = elementParts[0];
             IsActive = elementParts[1] == "Active";
             Text = elementParts[2];
@@ -53,7 +53,7 @@ namespace AIR.UnityTestPilot.Remote {
         public string TargetType;
 
         public byte[] Serialize() {
-            var queryString = String.Join(",", 
+            var queryString = String.Join("|", 
                 Format.ToString(), 
                 Name, 
                 TargetType
@@ -64,7 +64,7 @@ namespace AIR.UnityTestPilot.Remote {
 
         public void Deserialize(byte[] objBytes) {
             var queryString = Encoding.ASCII.GetString(objBytes);
-            var elementParts = queryString.Split(',');
+            var elementParts = queryString.Split('|');
             Format = (QueryFormat)Enum.Parse(typeof(QueryFormat), elementParts[0]);
             Name = elementParts[1];
             TargetType = elementParts[2];

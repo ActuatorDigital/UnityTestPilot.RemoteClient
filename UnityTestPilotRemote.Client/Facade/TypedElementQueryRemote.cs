@@ -26,7 +26,7 @@ namespace AIR.UnityTestPilot.Queries
             var remoteElementQuery = new RemoteElementQuery(
                 QueryFormat.TypedQuery,
                 _queryName,
-                _queryType.Name
+                _queryType.AssemblyQualifiedName
             );
 
             var remoteElementQueryTask = _process
