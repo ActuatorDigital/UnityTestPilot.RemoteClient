@@ -6,14 +6,13 @@ using System;
 
 namespace AIR.UnityTestPilotRemote.Client
 {
-    public class UiTestAgent : IRemoteUnityDriver, IAsyncDisposable
+    public class UnityDriverHostProcess : IRemoteUnityDriver, IAsyncDisposable
     {
+        private Task _agentProcess;
+        private readonly CancellationTokenSource _cancel;
+        private readonly IRemoteUnityDriver _driver;
 
-        Task _agentProcess;
-        CancellationTokenSource _cancel;
-        IRemoteUnityDriver _driver;
-
-        private UiTestAgent(
+        private UnityDriverHostProcess(
             CancellationTokenSource cancel,
             IRemoteUnityDriver driver,
             Task agentProcess
@@ -23,7 +22,7 @@ namespace AIR.UnityTestPilotRemote.Client
             _driver = driver;
         }
 
-        public static async Task<UiTestAgent> Build(string pathToAgent)
+        public static async Task<UnityDriverHostProcess> Build(string pathToAgent)
         {
             var agentExeFile = new FileInfo(pathToAgent);
             var agent = new RemoteAgentProcess(agentExeFile);
@@ -36,7 +35,7 @@ namespace AIR.UnityTestPilotRemote.Client
             if (connected) {
                 var driver = client.Bind();
                 var agentProcess = agent.WaitForExit();
-                return new UiTestAgent(cancel, driver, agentProcess);
+                return new UnityDriverHostProcess(cancel, driver, agentProcess);
             } else {
                 cancel.Cancel();
                 await agent.WaitForExit();
@@ -49,7 +48,6 @@ namespace AIR.UnityTestPilotRemote.Client
             await _agentProcess;
             _cancel.Dispose();
         }
-
 
         public void SetTimeScale(float timeScale) => _driver.SetTimeScale(timeScale);
 

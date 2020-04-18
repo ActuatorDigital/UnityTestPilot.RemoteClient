@@ -23,8 +23,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Assert
             Assert.IsFalse(
                 connected,
-                "Expected connection failure, but succeeded."
-            );
+                "Expected connection failure, but succeeded." );
         }
 
         [TestMethod]
@@ -40,8 +39,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Assert
             Assert.IsTrue(
                 DateTime.Now > testStartTime + timeout, 
-                "Connected, or timed out before specified time"
-            ); 
+                "Connected, or timed out before specified time" ); 
         }
 
         [TestMethod]

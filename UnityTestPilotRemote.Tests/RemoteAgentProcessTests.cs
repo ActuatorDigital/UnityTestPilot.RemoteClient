@@ -20,7 +20,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             var missingFile = new FileInfo("./FileThatDoesntExist");
 
             // Act
-            var act = new Action(() => new RemoteAgentProcess(missingFile));
+            var act = new Action(() => _ = new RemoteAgentProcess(missingFile));
 
             // Assert
             Assert.ThrowsException<FileNotFoundException>(act);
@@ -35,7 +35,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             var wrongExtension = new FileInfo(FILE_NAME);
 
             // Act
-            var act = new Action(() => new RemoteAgentProcess(wrongExtension));
+            var act = new Action(() => _ = new RemoteAgentProcess(wrongExtension));
 
             // Assert
             Assert.ThrowsException<FormatException>(act);
@@ -53,7 +53,7 @@ namespace AIR.UnityTestPilotRemote.Tests
 
             // Act
             try {
-                new RemoteAgentProcess(correctExtension);
+                var _ = new RemoteAgentProcess(correctExtension);
             }
             catch (Exception ex) {
                 exception = ex;

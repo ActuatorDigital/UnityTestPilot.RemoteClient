@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\UnityTestPilot\AIR.UnityTestPilot.csproj" />
       <ProjectReference Include="..\UnityTestPilotRemote.Common\AIR.UnityTestPilotRemote.Common.csproj" />
     </ItemGroup>
 

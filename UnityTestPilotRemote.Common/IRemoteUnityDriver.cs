@@ -73,7 +73,8 @@ namespace AIR.UnityTestPilot.Remote {
 
     public enum QueryFormat {
         NamedQuery = 0,
-        TypedQuery = 1
+        TypedQuery = 1,
+        Invalid
     }
     
 }

@@ -20,14 +20,9 @@
 
     <ItemGroup>
         <None Include="$(ProjectDir)\Agent\**" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="Agent\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Agent\**" />
+        <None Remove="Agent\MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" />
+        <None Remove="Agent\MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx" />
+        <None Remove="Agent\MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx" />
     </ItemGroup>
     
 </Project>
