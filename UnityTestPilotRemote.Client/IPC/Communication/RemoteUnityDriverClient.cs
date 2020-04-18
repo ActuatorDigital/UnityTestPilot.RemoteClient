@@ -10,15 +10,14 @@ namespace AIR.UnityTestPilotRemote.Client
 
     public class RemoteUnityDriverClient {
 
-        private int CONNECTION_TIMEOUT_SECONDS = 5;
+        private int CONNECTION_TIMEOUT_DEFAULT_SECONDS = 5;
         private TimeSpan _connectTimeout;
         private ClientRpc _clientRpc;
 
         public RemoteUnityDriverClient(TimeSpan connectTimeout = default) {
             _clientRpc = new ClientRpc(new TachyonClientIO.Client(), new RemoteDriverSerializer());
-            //_driver = _clientRpc.Bind<IRemoteUnityDriver>();
             _connectTimeout = connectTimeout == default 
-                ? TimeSpan.FromSeconds(CONNECTION_TIMEOUT_SECONDS) 
+                ? TimeSpan.FromSeconds(CONNECTION_TIMEOUT_DEFAULT_SECONDS) 
                 : connectTimeout;
         }
 

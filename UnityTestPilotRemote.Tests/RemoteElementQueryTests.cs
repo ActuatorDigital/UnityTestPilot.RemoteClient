@@ -13,15 +13,12 @@ namespace AIR.UnityTestPilotRemote.Tests
         UnityDriverHostProcess _agent;
 
         [TestInitialize]
-        public async Task TestInitialize() {
-            _agent = await UnityDriverHostProcess.Build(AGENT_PATH);
-        }
+        public async Task TestInitialize() 
+            => _agent = await UnityDriverHostProcess.Attach(AGENT_PATH);
 
         [TestCleanup]
-        public async Task TestCleanup() {
-            await _agent.DisposeAsync();
-        }
-        
+        public async Task TestCleanup() => await _agent.DisposeAsync();
+
         [TestMethod]
         [DataRow("Searchable_Button")]
         [DataRow("Searchable_Text")]
@@ -71,7 +68,7 @@ namespace AIR.UnityTestPilotRemote.Tests
         }
         
         [TestMethod]
-        public async Task LeftClick_ClickableButton_IncrementsCouterText() {
+        public async Task LeftClick_ClickableButton_IncrementsCounterText() {
             
             // Arrange
             const string ABOUT_BUTTON_NAME = "Clickable_Button"; 
@@ -85,15 +82,15 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Assert
             var aboutViewQuery = new RemoteElementQuery(
                 QueryFormat.NamedQuery, "ClickableCounter_Text", "Text");
-            var clickbleCounterText = await _agent.Query(aboutViewQuery);
-            StringAssert.Contains(clickbleCounterText.Text, "1", "Counter did not increment.");
+            var clickCounterText = await _agent.Query(aboutViewQuery);
+            StringAssert.Contains(clickCounterText.Text, "1", "Counter did not increment.");
         }
 
 
         [TestMethod]
         [DataRow("TwoCities_Text", "It was the best of times")]
         [DataRow("Searchable_Text", "The following elements can be searched:")]
-        public async Task Query_TextElemets_ReturnsTextContent(string elementName, string expectedText)
+        public async Task Query_TextElements_ReturnsTextContent(string elementName, string expectedText)
         {
 
             // Act

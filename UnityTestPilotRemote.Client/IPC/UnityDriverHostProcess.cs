@@ -22,7 +22,25 @@ namespace AIR.UnityTestPilotRemote.Client
             _driver = driver;
         }
 
-        public static async Task<UnityDriverHostProcess> Build(string pathToAgent)
+        public static async Task<UnityDriverHostProcess> Attach()
+        {
+            var cancel = new CancellationTokenSource();
+            var client = new RemoteUnityDriverClient();
+            bool connected = await client.Connect();
+            
+            if (connected) {
+                var driver = client.Bind();
+                var agentProcess = Task.Run(() => {
+                    while (!cancel.IsCancellationRequested) 
+                        Task.Delay(100, cancel.Token);
+                });
+                return new UnityDriverHostProcess(cancel, driver, agentProcess);
+            }
+            
+            throw new IOException("Unable to connect to remote UI Test agent.");
+        }
+        
+        public static async Task<UnityDriverHostProcess> Attach(string pathToAgent)
         {
             var agentExeFile = new FileInfo(pathToAgent);
             var agent = new RemoteAgentProcess(agentExeFile);
@@ -36,11 +54,11 @@ namespace AIR.UnityTestPilotRemote.Client
                 var driver = client.Bind();
                 var agentProcess = agent.WaitForExit();
                 return new UnityDriverHostProcess(cancel, driver, agentProcess);
-            } else {
-                cancel.Cancel();
-                await agent.WaitForExit();
-                throw new IOException("Unable to connect to remote UI Test agent.");
             }
+
+            cancel.Cancel();
+            await agent.WaitForExit();
+            throw new IOException("Unable to connect to remote UI Test agent.");
         }
 
         public async ValueTask DisposeAsync() { 

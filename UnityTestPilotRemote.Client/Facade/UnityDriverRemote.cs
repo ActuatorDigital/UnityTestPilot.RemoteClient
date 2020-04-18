@@ -11,10 +11,10 @@ namespace AIR.UnityTestPilotRemote.Client
         
         private UnityDriverRemote(IUnityDriverAgent agent) 
             : base(agent) { }
-
-        public static async Task<UnityDriverRemote> Build(string pathToAgentExe)
+        
+        public static async Task<UnityDriverRemote> Attach(string pathToAgentExe = "")
         {
-            var remoteProcess = await UnityDriverHostProcess.Build(pathToAgentExe);
+            var remoteProcess = await UnityDriverHostProcess.Attach(pathToAgentExe);
             var agentAdapter = new RemoteUnityDriverAdapter(remoteProcess);
             var remoteDriver = new UnityDriverRemote(agentAdapter);
             remoteDriver._hostProcess = remoteProcess;
