@@ -1,8 +1,8 @@
-﻿using AIR.UnityTestPilot.Remote;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 using System;
+using AIR.UnityTestPilotRemote.Common;
 
 namespace AIR.UnityTestPilotRemote.Client
 {
@@ -22,7 +22,7 @@ namespace AIR.UnityTestPilotRemote.Client
             _driver = driver;
         }
 
-        public static async Task<UnityDriverHostProcess> Attach(string pathToAgent)
+        public static async Task<UnityDriverHostProcess> Attach(string pathToAgent, string[] args = default)
         {
             if (string.IsNullOrEmpty(pathToAgent)) {
                 var cancel = new CancellationTokenSource();
@@ -41,7 +41,7 @@ namespace AIR.UnityTestPilotRemote.Client
                 throw new IOException("Unable to connect to remote UI Test agent.");
             } else {
                 var agentExeFile = new FileInfo(pathToAgent);
-                var agent = new RemoteAgentProcess(agentExeFile);
+                var agent = new RemoteAgentProcess(agentExeFile, args);
                 var cancel = new CancellationTokenSource();
                 await agent.StartAgentProcess(cancel.Token);
 

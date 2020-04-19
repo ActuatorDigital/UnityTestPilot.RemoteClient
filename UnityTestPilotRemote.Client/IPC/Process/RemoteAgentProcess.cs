@@ -17,18 +17,18 @@ namespace AIR.UnityTestPilotRemote.Client {
 
         public bool AgentIsRunning { get; private set; }
         
-        public RemoteAgentProcess(FileInfo executableFile) {
+        public RemoteAgentProcess(FileInfo executableFile, string[] args = default) {
 
             if(!executableFile.Exists)
                 throw new FileNotFoundException(executableFile.FullName + " missing.");
 
-            if (!executableFile.IsExecutable()) 
-                throw new FormatException("Provided file was not executable.");
+            // if (!executableFile.IsExecutable()) 
+            //     throw new FormatException("Provided file was not executable.");
 
             _processStart = new ProcessStartInfo {
                 FileName = executableFile.FullName,
                 WorkingDirectory = executableFile.Directory.FullName,
-                Arguments = "-testAgent",
+                Arguments = string.Join(" ", args),
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true

@@ -1,6 +1,6 @@
 using AIR.UnityTestPilot.Interactions;
 using AIR.UnityTestPilot.Queries;
-using AIR.UnityTestPilot.Remote;
+using AIR.UnityTestPilotRemote.Common;
 
 namespace AIR.UnityTestPilotRemote.Client
 {

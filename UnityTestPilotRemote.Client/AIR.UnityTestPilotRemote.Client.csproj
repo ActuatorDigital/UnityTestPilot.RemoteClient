@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,6 +22,10 @@
     <ItemGroup>
       <ProjectReference Include="..\..\UnityTestPilot\AIR.UnityTestPilot.csproj" />
       <ProjectReference Include="..\UnityTestPilotRemote.Common\AIR.UnityTestPilotRemote.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
     </ItemGroup>
 
 </Project>

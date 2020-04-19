@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AIR.UnityTestPilot.Remote;
 using AIR.UnityTestPilotRemote.Client;
+using AIR.UnityTestPilotRemote.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIR.UnityTestPilotRemote.Tests
@@ -14,7 +14,10 @@ namespace AIR.UnityTestPilotRemote.Tests
 
         [TestInitialize]
         public async Task TestInitialize() 
-            => _agent = await UnityDriverHostProcess.Attach(AGENT_PATH);
+            => _agent = await UnityDriverHostProcess.Attach(
+                AGENT_PATH,
+                new[] { "-loadPlugin", "./Plugin/AIR.UnityTestPilot.Remote.dll" }
+            );
 
         [TestCleanup]
         public async Task TestCleanup() => await _agent.DisposeAsync();

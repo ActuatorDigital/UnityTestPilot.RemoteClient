@@ -1,8 +1,8 @@
 // Copyright (c) AIR Pty Ltd. All rights reserved.
 
 using System;
-using AIR.UnityTestPilot.Remote;
 using AIR.UnityTestPilotRemote.Client;
+using AIR.UnityTestPilotRemote.Common;
 
 namespace AIR.UnityTestPilot.Interactions
 {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TachyonCommon;
 
-namespace AIR.UnityTestPilot.Remote {
+namespace AIR.UnityTestPilotRemote.Common {
 
     [GenerateBindings]
     public interface IRemoteUnityDriver {    

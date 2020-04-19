@@ -1,7 +1,7 @@
 using System;
 using TachyonCommon;
 
-namespace AIR.UnityTestPilot.Remote {
+namespace AIR.UnityTestPilotRemote.Common {
     public class RemoteDriverSerializer : ISerializer {
         
         public byte[] SerializeObject<T>(T obj) {

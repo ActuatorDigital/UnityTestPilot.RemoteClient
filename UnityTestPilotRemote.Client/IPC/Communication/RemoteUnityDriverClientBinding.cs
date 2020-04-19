@@ -1,7 +1,7 @@
 using TachyonClientRPC;
 using System.Threading.Tasks;
 using System;
-using AIR.UnityTestPilot.Remote;
+using AIR.UnityTestPilotRemote.Common;
 
 namespace GeneratedBindings
 {

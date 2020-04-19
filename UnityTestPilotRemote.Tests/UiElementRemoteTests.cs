@@ -84,7 +84,7 @@ namespace AIR.UnityTestPilotRemote.Tests
         [TestMethod]
         [DataRow("TwoCities_Text", "It was the best of times")]
         [DataRow("Searchable_Text", "The following elements can be searched:")]
-        public void Query_TextElemets_ReturnsTextContent(string elementName, string expectedText)
+        public void Query_TextElements_ReturnsTextContent(string elementName, string expectedText)
         {
 
             // Act
