@@ -23,12 +23,21 @@
         <None Remove="Agent\MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" />
         <None Remove="Agent\MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx" />
         <None Remove="Agent\MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx" />
+        <None Remove="RemoteHost\MonoBleedingEdge\etc\mono\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\..\UnityExample\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="RemoteHost\MonoBleedingEdge\etc\mono\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="RemoteHost\MonoBleedingEdge\etc\mono\**" />
     </ItemGroup>
     
 </Project>
