@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>AIR.UnityTestPilotRemote.Client</id>
+    <version>0.0.2</version>
+    <title>Unity Test Pilot Remote Client</title>
+    <authors>AIR</authors>
+    <owners>AIR Pty Ltd</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/AnImaginedReality/UnityTestPilot</projectUrl>
+    <repository type="git" url="https://github.com/AnImaginedReality/UnityTestPilot.git" />
+    <description>Remote agent driver client for UnityTestPilot.</description>
+    <copyright>Copyright © 2020 AIR Pty Ltd</copyright>
+    <tags>Unity3d Testing</tags>
+  </metadata>
+</package>
