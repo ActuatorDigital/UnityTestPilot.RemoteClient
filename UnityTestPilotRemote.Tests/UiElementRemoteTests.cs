@@ -97,5 +97,37 @@ namespace AIR.UnityTestPilotRemote.Tests
                 "Expected text is not found.");
             Assert.IsTrue(query.IsActive, "Found object was not active.");
         }
+        
+        [TestMethod]
+        public async Task Query_PositionedElement_ReturnsPositions()
+        {
+            // Arrange
+            const string EXPECTED_NAME = "PositionedCube";
+            float expectedXPos = 25, expectedYPos = 25, expectedZPos = 25;
+
+            // Act
+            var query = _agent.FindElement(By.Type<Text>(EXPECTED_NAME));
+
+            // Assert
+            Assert.AreSame(expectedXPos, query.LocalPosition.X);
+            Assert.AreSame(expectedYPos, query.LocalPosition.Y);
+            Assert.AreSame(expectedZPos, query.LocalPosition.Z);
+        }
+        
+        [TestMethod]
+        public async Task Query_RotatedElement_ReturnsRotation()
+        {
+            // Arrange
+            const string EXPECTED_NAME = "RotatedCube";
+            float expectedXRot = 25, expectedYRot = 25, expectedZRot = 25;
+
+            // Act
+            var query = _agent.FindElement(By.Type<Text>(EXPECTED_NAME));
+
+            // Assert
+            Assert.AreSame(expectedXRot, query.EulerRotation.X);
+            Assert.AreSame(expectedYRot, query.EulerRotation.Y);
+            Assert.AreSame(expectedZRot, query.EulerRotation.Z);
+        }
     }
 }

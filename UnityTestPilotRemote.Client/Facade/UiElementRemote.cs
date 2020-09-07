@@ -24,6 +24,10 @@ namespace AIR.UnityTestPilot.Interactions
         public override bool IsActive => _remoteUiElement.IsActive;
 
         public override string Text => _remoteUiElement.Text;
+        public override Float3 LocalPosition 
+            => new Float3(_remoteUiElement.XPos, _remoteUiElement.YPos, _remoteUiElement.ZPos);
+        public override Float3 EulerRotation
+            => new Float3(_remoteUiElement.ZRot, _remoteUiElement.ZRot, _remoteUiElement.ZRot);
 
         public override void LeftClick() => _process.LeftClick(_remoteUiElement);
         

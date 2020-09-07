@@ -18,11 +18,15 @@ namespace AIR.UnityTestPilotRemote.Common {
         public string Name;
         public bool IsActive;
         public string Text;
+        public float XPos, YPos, ZPos;
+        public float XRot, YRot, ZRot;
 
         public byte[] Serialize() {
             var elementStr = String.Join("|",
                 Name, 
-                IsActive ? "Active" : "Inactive", 
+                IsActive ? "Active" : "Inactive",
+                XPos, YPos, ZPos,
+                XRot, YRot, ZRot,
                 Text );
             return Encoding.ASCII.GetBytes(elementStr);
         }
@@ -32,7 +36,13 @@ namespace AIR.UnityTestPilotRemote.Common {
             var elementParts = elementStr.Split('|');
             Name = elementParts[0];
             IsActive = elementParts[1] == "Active";
-            Text = elementParts[2];
+            XPos = float.Parse(elementParts[2]);
+            YPos = float.Parse(elementParts[3]);
+            ZPos = float.Parse(elementParts[4]);
+            XPos = float.Parse(elementParts[5]);
+            YPos = float.Parse(elementParts[6]);
+            ZPos = float.Parse(elementParts[7]);
+            Text = elementParts[8];
         }
     }
 
@@ -78,3 +88,4 @@ namespace AIR.UnityTestPilotRemote.Common {
     }
     
 }
+

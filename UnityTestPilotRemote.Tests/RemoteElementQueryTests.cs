@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AIR.UnityTestPilot.Interactions;
 using AIR.UnityTestPilotRemote.Client;
 using AIR.UnityTestPilotRemote.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -107,6 +108,42 @@ namespace AIR.UnityTestPilotRemote.Tests
                 expectedText,
                 "Expected text is not found.");
             Assert.IsTrue(query.IsActive, "Found object was not active.");
+        }
+        
+        [TestMethod]
+        public async Task Query_PositionedElement_ReturnsPositions()
+        {
+            // Arrange
+            const string EXPECTED_NAME = "PositionedCube";
+            Float3 EXPECTED_POSITION = new Float3(25,25,25);
+
+            // Act
+            var mockQuery = new RemoteElementQuery(
+                QueryFormat.NamedQuery, EXPECTED_NAME, "GameObject");
+            var query = await _agent.Query(mockQuery);
+
+            // Assert
+            Assert.AreSame(EXPECTED_POSITION.X, query.XPos);
+            Assert.AreSame(EXPECTED_POSITION.Y, query.YPos);
+            Assert.AreSame(EXPECTED_POSITION.Z, query.ZPos);
+        }
+        
+        [TestMethod]
+        public async Task Query_RotatedElement_ReturnsRotation()
+        {
+            // Arrange
+            const string EXPECTED_NAME = "PositionedCube";
+            Float3 EXPECTED_ROTATION = new Float3(25,25,25);
+
+            // Act
+            var mockQuery = new RemoteElementQuery(
+                QueryFormat.NamedQuery, EXPECTED_NAME, "GameObject");
+            var query = await _agent.Query(mockQuery);
+
+            // Assert
+            Assert.AreSame(EXPECTED_ROTATION.X, query.XRot);
+            Assert.AreSame(EXPECTED_ROTATION.Y, query.YRot);
+            Assert.AreSame(EXPECTED_ROTATION.Z, query.ZRot);
         }
 
     }
