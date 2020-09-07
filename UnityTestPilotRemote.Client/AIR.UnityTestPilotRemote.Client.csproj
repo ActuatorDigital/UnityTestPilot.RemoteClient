@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,16 +6,19 @@
 
     <ItemGroup>
       <Reference Include="Tachyon-Client-IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\lib\Tachyon-Client-IO.dll</HintPath>
+        <HintPath>../lib/Tachyon-Client-IO.dll</HintPath>
       </Reference>
       <Reference Include="Tachyon-Client-RPC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\lib\Tachyon-Client-RPC.dll</HintPath>
+        <HintPath>../lib/Tachyon-Client-RPC.dll</HintPath>
       </Reference>
       <Reference Include="Tachyon-Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\lib\Tachyon-Common.dll</HintPath>
+        <HintPath>../lib/Tachyon-Common.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>Facade\UnityEngine.UI.dll</HintPath>
+        <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
       </Reference>
     </ItemGroup>
 

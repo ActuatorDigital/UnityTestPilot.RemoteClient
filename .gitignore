@@ -6,3 +6,5 @@ UnityTestPilotRemote.Common/bin/
 UnityTestPilotRemote.Tests/Agent/
 UnityTestPilotRemote.Client/obj/
 UnityTestPilotRemote.Client/bin/
+UnityTestPilotRemote.Client/.idea/
+UnityTestPilotRemote.Client/AIR.UnityTestPilotRemote.Client.*
