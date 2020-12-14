@@ -74,9 +74,10 @@ namespace AIR.UnityTestPilotRemote.Tests
 
             try {
                 // Act
-                using var remoteProcess = new RemoteAgentProcess(new FileInfo(AGENT_EXE_NAME));
-                await remoteProcess.StartAgentProcess(cancel.Token);
-                await remoteProcess.WaitForExit();
+                using (var remoteProcess = new RemoteAgentProcess(new FileInfo(AGENT_EXE_NAME))) {
+                    await remoteProcess.StartAgentProcess(cancel.Token);
+                    await remoteProcess.WaitForExit();
+                }
             }
             catch (Exception ex) {
                 exception = ex;
@@ -95,12 +96,13 @@ namespace AIR.UnityTestPilotRemote.Tests
             cancel.CancelAfter(TimeSpan.FromSeconds(8));
 
             // Act
-            using var remoteProcess = new RemoteAgentProcess(new FileInfo(AGENT_EXE_NAME));
-            await remoteProcess.StartAgentProcess(cancel.Token);
-            await remoteProcess.WaitForExit();
+            using (var remoteProcess = new RemoteAgentProcess(new FileInfo(AGENT_EXE_NAME))) {
+                await remoteProcess.StartAgentProcess(cancel.Token);
+                await remoteProcess.WaitForExit();
 
-            // Assert
-            Assert.IsFalse(remoteProcess.AgentIsRunning);
+                // Assert
+                Assert.IsFalse(remoteProcess.AgentIsRunning);
+            }
         }
 
         [TestMethod]

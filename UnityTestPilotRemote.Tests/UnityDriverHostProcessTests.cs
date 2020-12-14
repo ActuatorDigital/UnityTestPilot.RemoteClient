@@ -14,7 +14,7 @@ namespace AIR.UnityTestPilotRemote.Tests
             // Arrange
             try {
                 // Act
-                await using (await UnityDriverHostProcess.Attach("./Agent/RemoteHost.exe")) { }
+                await UnityDriverHostProcess.Attach("./Agent/RemoteHost.exe");
             } catch (Exception ex) {
                 // Assert
                 Assert.Fail("Expected no exception, but caught: " + ex.Message );  

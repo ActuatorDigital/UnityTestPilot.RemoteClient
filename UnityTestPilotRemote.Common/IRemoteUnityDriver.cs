@@ -11,6 +11,8 @@ namespace AIR.UnityTestPilotRemote.Common {
         void Shutdown(Boolean immediate);
         void SetTimeScale(float timeScale);
         void LeftClick(RemoteUiElement element);
+        void LeftClickDown(RemoteUiElement element);
+        void LeftClickUp(RemoteUiElement element);
     }
 
     public struct RemoteUiElement : ISerializableAgentMessage {
@@ -31,17 +33,21 @@ namespace AIR.UnityTestPilotRemote.Common {
             return Encoding.ASCII.GetBytes(elementStr);
         }
 
-        public void Deserialize(byte[] objBytes) {
+        public void Deserialize(byte[] objBytes)
+        {
             var elementStr = Encoding.ASCII.GetString(objBytes);
             var elementParts = elementStr.Split('|');
             Name = elementParts[0];
             IsActive = elementParts[1] == "Active";
+
             XPos = float.Parse(elementParts[2]);
             YPos = float.Parse(elementParts[3]);
             ZPos = float.Parse(elementParts[4]);
-            XPos = float.Parse(elementParts[5]);
-            YPos = float.Parse(elementParts[6]);
-            ZPos = float.Parse(elementParts[7]);
+
+            XRot = float.Parse(elementParts[5]);
+            YRot = float.Parse(elementParts[6]);
+            ZRot = float.Parse(elementParts[7]);
+
             Text = elementParts[8];
         }
     }

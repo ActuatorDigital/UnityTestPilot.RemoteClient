@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using AIR.UnityTestPilot.Queries;
 using AIR.UnityTestPilotRemote.Client;
@@ -12,11 +14,11 @@ namespace AIR.UnityTestPilotRemote.Tests
         
         private const string AGENT_PATH = "./Agent/RemoteHost.exe";
         UnityDriverRemote _agent;
-        
+
         [TestInitialize]
         public async Task TestInitialize()
-            // => _agent = await UnityDriverRemote.Attach()
-            => _agent = await UnityDriverRemote.Attach(AGENT_PATH);
+            => _agent = await UnityDriverRemote.Attach();
+            //=> _agent = await UnityDriverRemote.Attach(AGENT_PATH);
 
         [TestCleanup]
         public async Task TestCleanup() => await _agent.DisposeAsync();
@@ -61,13 +63,49 @@ namespace AIR.UnityTestPilotRemote.Tests
             Assert.IsFalse(query.IsActive);
 
         }
-        
+
+        [TestMethod]
+        public void LeftClickDown_ClickableButton_DoesNotRelease()
+        {
+            // Arrange
+            
+            // Act
+            
+            // Assert
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void LeftClickAndHold_WithHoldTime_HoldsThenReleases()
+        {
+            // Arrange
+            const string HOLD_BUTTON_NAME = "Holdable_Button";
+            var holdableButtonElement = _agent.FindElement(By.Type<Button>(HOLD_BUTTON_NAME));
+            var holdTime = TimeSpan.FromSeconds(1);
+            
+            // Act
+            holdableButtonElement.LeftClickAndHold(holdTime);
+            var heldTextBefore = _agent.FindElement(By.Type<Text>("Held_Text"));
+            var textContainsReleased = heldTextBefore.Text.Contains("Released");
+            Assert.IsTrue(!textContainsReleased);
+            
+            Thread.Sleep(holdTime);
+            
+            // Assert
+            var clickCounterTextElement = _agent.FindElement(By.Type<Text>("Held_Text"));
+            StringAssert.Contains(
+                clickCounterTextElement.Text,
+                "Released",
+                "Release was not regerested after time."
+            );
+        }
+
         [TestMethod]
         public void LeftClick_ClickableButton_IncrementsCounterText() {
             
             // Arrange
-            const string ABOUT_BUTTON_NAME = "Clickable_Button";
-            var aboutButtonElement = _agent.FindElement(By.Type<Button>(ABOUT_BUTTON_NAME));
+            const string CLICKABLE_BUTTON_NAME = "Clickable_Button";
+            var aboutButtonElement = _agent.FindElement(By.Type<Button>(CLICKABLE_BUTTON_NAME));
             
             // Act
             aboutButtonElement.LeftClick();

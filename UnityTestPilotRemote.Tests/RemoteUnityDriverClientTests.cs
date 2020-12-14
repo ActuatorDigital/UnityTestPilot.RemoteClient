@@ -50,19 +50,20 @@ namespace AIR.UnityTestPilotRemote.Tests
             var agentExecFile = new FileInfo(AGENT_EXE_NAME);
 
             var cancel = new CancellationTokenSource();
-            using var remoteProcess = new RemoteAgentProcess(agentExecFile);
-            await remoteProcess.StartAgentProcess(cancel.Token);
+            using (var remoteProcess = new RemoteAgentProcess(agentExecFile)) {
+                await remoteProcess.StartAgentProcess(cancel.Token);
 
-            // Act
-            var connectTimeout = TimeSpan.FromSeconds(CONNECT_TIMEOUT_SECONDS);
-            var client = new RemoteUnityDriverClient(connectTimeout);
-            var connected = await client.Connect();
+                // Act
+                var connectTimeout = TimeSpan.FromSeconds(CONNECT_TIMEOUT_SECONDS);
+                var client = new RemoteUnityDriverClient(connectTimeout);
+                var connected = await client.Connect();
 
-            // Assert
-            cancel.Cancel();
-            await remoteProcess.WaitForExit();
+                // Assert
+                cancel.Cancel();
+                await remoteProcess.WaitForExit();
 
-            Assert.IsTrue(connected, "Failed to connect.");
+                Assert.IsTrue(connected, "Failed to connect.");
+            }
         }
 
         [TestMethod]
