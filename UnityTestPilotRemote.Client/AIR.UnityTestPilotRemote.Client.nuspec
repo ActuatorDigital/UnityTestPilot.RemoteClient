@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AIR.UnityTestPilotRemote.Client</id>
-    <version>0.0.7</version>
+    <version>0.0.9</version>
     <title>Unity Test Pilot Remote Client</title>
     <authors>AIR</authors>
     <owners>AIR Pty Ltd</owners>
