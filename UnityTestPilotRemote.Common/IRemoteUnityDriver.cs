@@ -36,6 +36,9 @@ namespace AIR.UnityTestPilotRemote.Common {
         public void Deserialize(byte[] objBytes)
         {
             var elementStr = Encoding.ASCII.GetString(objBytes);
+            if(string.IsNullOrEmpty(elementStr))
+                return;
+
             var elementParts = elementStr.Split('|');
             Name = elementParts[0];
             IsActive = elementParts[1] == "Active";
