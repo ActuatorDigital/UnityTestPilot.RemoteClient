@@ -14,5 +14,8 @@ namespace AIR.UnityTestPilot.Queries
 
         public static ElementQuery Type<TQueryType>() =>
             ByBase.Type<TQueryType, TypedElementQueryRemote>();
+
+        public static ElementQuery Path(string path) =>
+            ByBase.Path<PathElementProxyQueryRemote>(path);
     }
 }
