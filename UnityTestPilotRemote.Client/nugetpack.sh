@@ -1,1 +1,1 @@
-nuget pack AIR.UnityTestPilotRemote.Client.csproj -IncludeReferencedProjects
+nuget pack AIR.UnityTestPilotRemote.Client.csproj -IncludeReferencedProjects -Prop Configuration=Release
