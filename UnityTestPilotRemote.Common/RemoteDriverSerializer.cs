@@ -1,7 +1,8 @@
 using System;
 using TachyonCommon;
 
-namespace AIR.UnityTestPilotRemote.Common {
+namespace AIR.UnityTestPilotRemote.Common
+{
     public class RemoteDriverSerializer : ISerializer {
         
         public byte[] SerializeObject<T>(T obj) {
@@ -23,10 +24,5 @@ namespace AIR.UnityTestPilotRemote.Common {
                 " does not implement " + typeof(ISerializableAgentMessage).Name);
         }
         
-    }
-
-    public interface ISerializableAgentMessage {
-        byte[] Serialize();
-        void Deserialize(byte[] objBytes);
     }
 }

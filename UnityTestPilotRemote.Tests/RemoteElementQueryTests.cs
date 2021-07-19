@@ -96,7 +96,6 @@ namespace AIR.UnityTestPilotRemote.Tests
         [DataRow("Searchable_Text", "The following elements can be searched:")]
         public async Task Query_TextElements_ReturnsTextContent(string elementName, string expectedText)
         {
-
             // Act
             var mockQuery = new RemoteElementQuery(
                 QueryFormat.NamedQuery, elementName, "Text");

@@ -11,14 +11,13 @@ namespace AIR.UnityTestPilotRemote.Tests
     [TestClass]
     public class UiElementRemoteTests
     {
-        
         private const string AGENT_PATH = "./Agent/RemoteHost.exe";
         UnityDriverRemote _agent;
 
         [TestInitialize]
         public async Task TestInitialize()
-            => _agent = await UnityDriverRemote.Attach();
-            //=> _agent = await UnityDriverRemote.Attach(AGENT_PATH);
+            //=> _agent = await UnityDriverRemote.Attach();
+            => _agent = await UnityDriverRemote.Attach(AGENT_PATH);
 
         [TestCleanup]
         public async Task TestCleanup() => await _agent.DisposeAsync();
@@ -124,7 +123,6 @@ namespace AIR.UnityTestPilotRemote.Tests
         [DataRow("Searchable_Text", "The following elements can be searched:")]
         public void Query_TextElements_ReturnsTextContent(string elementName, string expectedText)
         {
-
             // Act
             var query = _agent.FindElement(By.Type<Text>(elementName));
 
@@ -135,7 +133,64 @@ namespace AIR.UnityTestPilotRemote.Tests
                 "Expected text is not found.");
             Assert.IsTrue(query.IsActive, "Found object was not active.");
         }
-        
+
+        [TestMethod]
+        [DataRow("Searchable_Button/Text", "Specific Button")]
+        [DataRow("Different_Searchable_Button/Text", "Less Specific Button")]
+        public void Query_Path_ReturnsTextContent(string path, string expectedText)
+        {
+            // Act
+            var query = _agent.FindElement(By.Path(path));
+
+            // Assert
+            StringAssert.Contains(
+                query.Text,
+                expectedText,
+                "Expected text is not found.");
+        }
+
+        [TestMethod]
+        [DataRow("Duplicate_Panel_A/Button", "Duplicate_Panel_Output/Text", "A")]
+        [DataRow("Duplicate_Panel_B/Button", "Duplicate_Panel_Output/Text", "B")]
+        public async Task Query_PathButtonClick_ReturnsTextContent(string pathToClick, string pathToOutput, string expectedText)
+        {
+            // Act
+            var clickQuery = _agent.FindElement(By.Path(pathToClick));
+            clickQuery.LeftClick();
+            await Task.Delay(200);
+            var textQuery = _agent.FindElement(By.Path(pathToOutput));
+            await Task.Delay(2000);
+
+            // Assert
+            StringAssert.Contains(
+                clickQuery.FullPath,
+                pathToClick,
+                "Returned object does not contain the path.");
+            // Assert
+            StringAssert.Contains(
+                textQuery.Text,
+                expectedText,
+                "Expected text is not found.");
+        }
+
+        [TestMethod]
+        [DataRow("ButtonA", "ButtonDupOutputText", "A")]
+        [DataRow("ButtonB", "ButtonDupOutputText", "B")]
+        public async Task Query_ButtonClick_ReturnsTextContent(string buttonName, string pathToOutput, string expectedText)
+        {
+            // Act
+            var clickQuery = _agent.FindElement(By.Type<Button>(buttonName));
+            clickQuery.LeftClick();
+            await Task.Delay(200);
+            var textQuery = _agent.FindElement(By.Path(pathToOutput));
+
+            // Assert
+            StringAssert.Contains(
+                textQuery.Text,
+                expectedText,
+                "Expected text is not found.");
+        }
+
         [TestMethod]
         public async Task Query_PositionedElement_ReturnsPositions()
         {

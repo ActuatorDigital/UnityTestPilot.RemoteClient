@@ -35,7 +35,7 @@ namespace AIR.UnityTestPilotRemote.Client
             timeout.CancelAfter(_connectTimeout);
             await Task.Run(() => {
                 while (!connected && !failedToConnect) 
-                    Task.Delay(TimeSpan.FromSeconds(.5f));
+                    Task.Delay(TimeSpan.FromSeconds(.1f));
             }, timeout.Token);
 
             return connected & !failedToConnect;

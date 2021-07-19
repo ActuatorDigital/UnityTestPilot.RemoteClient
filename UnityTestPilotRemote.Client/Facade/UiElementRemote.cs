@@ -23,6 +23,8 @@ namespace AIR.UnityTestPilot.Interactions
 
         public override string Name => _remoteUiElement.Name;
 
+        public override string FullPath => _remoteUiElement.FullPath;
+
         public override bool IsActive => _remoteUiElement.IsActive;
 
         public override string Text => _remoteUiElement.Text;

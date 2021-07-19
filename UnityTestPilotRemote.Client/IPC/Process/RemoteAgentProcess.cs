@@ -25,6 +25,9 @@ namespace AIR.UnityTestPilotRemote.Client {
             // if (!executableFile.IsExecutable()) 
             //     throw new FormatException("Provided file was not executable.");
 
+            if (args == null)
+                args = Array.Empty<string>();
+
             _processStart = new ProcessStartInfo {
                 FileName = executableFile.FullName,
                 WorkingDirectory = executableFile.Directory.FullName,
