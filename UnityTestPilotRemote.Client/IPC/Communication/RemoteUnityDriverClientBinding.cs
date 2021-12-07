@@ -28,6 +28,15 @@ namespace GeneratedBindings
         
         public void LeftClickUp(RemoteUiElement elementArg)
             => _client.Send("LeftClickUp", elementArg);
+
+        public void RightClick(RemoteUiElement elementArg)
+            => _client.Send("RightClick", elementArg);
+
+        public void RightClickDown(RemoteUiElement elementArg)
+            => _client.Send("RightClick", elementArg);
+
+        public void RightClickUp(RemoteUiElement elementArg)
+            => _client.Send("RightClick", elementArg);
     }
 
 }
