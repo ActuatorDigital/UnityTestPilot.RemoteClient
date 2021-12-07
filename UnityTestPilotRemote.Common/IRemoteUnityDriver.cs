@@ -13,6 +13,9 @@ namespace AIR.UnityTestPilotRemote.Common
         void LeftClick(RemoteUiElement element);
         void LeftClickDown(RemoteUiElement element);
         void LeftClickUp(RemoteUiElement element);
+        void RightClick(RemoteUiElement element);
+        void RightClickDown(RemoteUiElement element);
+        void RightClickUp(RemoteUiElement element);
     }
 }
 

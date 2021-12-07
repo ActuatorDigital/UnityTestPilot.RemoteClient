@@ -73,7 +73,13 @@ namespace AIR.UnityTestPilotRemote.Client
         public void LeftClickDown(RemoteUiElement element) => _driver.LeftClickDown(element);
 
         public void LeftClickUp(RemoteUiElement element) => _driver.LeftClickUp(element);
-        
+
+        public void RightClick(RemoteUiElement element) => _driver.RightClick(element);
+
+        public void RightClickDown(RemoteUiElement element) => _driver.RightClickDown(element);
+
+        public void RightClickUp(RemoteUiElement element) => _driver.RightClickUp(element);
+
         public void Shutdown(bool immediate) => _driver.Shutdown(immediate);
         
         public Task<RemoteUiElement> Query(RemoteElementQuery query) => _driver.Query(query);

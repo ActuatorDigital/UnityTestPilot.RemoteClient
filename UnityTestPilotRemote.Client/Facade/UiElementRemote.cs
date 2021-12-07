@@ -53,17 +53,14 @@ namespace AIR.UnityTestPilot.Interactions
         public override void MiddleClick() =>
             throw new NotImplementedException("Remote process does not yet support middle click.");
 
-        public override void RightClick() =>
-            throw new NotImplementedException("Remote process does not yet support right click.");
+        public override void RightClick() => _process.RightClick(_remoteUiElement);
 
-        public override void RightClickDown() =>
-            throw new NotImplementedException("Remote process does not yet support right click without release.");
+        public override void RightClickDown() => _process.RightClickDown(_remoteUiElement);
 
         public override void MiddleClickDown() =>
             throw new NotImplementedException("Remote process does not yet support middle click.");
 
-        public override void RightClickUp() =>
-            throw new NotImplementedException("Remote process does not yet support right click up.");
+        public override void RightClickUp() => _process.RightClickUp(_remoteUiElement);
 
         public override void MiddleClickUp() =>
             throw new NotImplementedException("Remote process does not yet support middle click up.");
